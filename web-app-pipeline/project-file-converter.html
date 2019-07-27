@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+    <title>ACE Project Spotlight</title>
+
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Main CSS-->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/css/mdb.min.css" rel="stylesheet">
+
+    <link href="vendor/css/styles.css" rel="stylesheet" media="all">
+    <link href="vendor/css/main.css" rel="stylesheet" media="all">
+    <link href="vendor/css/fileConversion.css" rel="stylesheet" media="all">
+    
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-white static-top">
+        <div class="container">
+          <a class="navbar-brand text-dark" href="/">Analytics Center of Excellence</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link text-dark" href="/">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="/about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="/contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <div class="page-wrapper bg-dark-colorib p-t-100 p-b-50">
+        <div class="wrapper wrapper--w900">
+            <div class="card card-6">
+                <div class="card-heading">
+                    <h2 class="title">ACE File Converter</h2>
+                </div>
+                <div class="card-body">
+                    <form enctype="multipart/form-data" action="project-file-converter" method="post">
+                        <div class="form-row-colorib">
+                            <div class="name">target file type</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="text" name="target" placeholder="json" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row-colorib">
+                            <div class="name">Files to be converted</div>
+                            <div class="value">
+                                <div class="input-group js-input-file">
+                                    <input class="input-file" type="file" name="uploadfile" id="file" multiple="multiple" required>
+                                    <label class="label--file" for="file">Choose files</label>
+                                    <span class="input-file__info">No file chosen</span>
+                                </div>
+                                <div class="label--desc">Conversion might take several minutes.</div>
+                            </div>
+                        </div>
+                        <div class="card-footer" style="display: flex">
+                            <button class="btn btn--radius-2 btn--blue-2" type="submit">Start Convert</button>
+                            <div class="message" style="line-height: 50px; vertical-align: middle;">{{.}}</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/js/mdb.min.js"></script>
+    <script src="vendor/js/global.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>

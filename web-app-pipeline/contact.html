@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSPlumb</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/fontawesome.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.10.2/css/jsplumbtoolkit-defaults.min.css"></link>
+</head>
+<body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.10.2/js/jsplumb.min.js"></script>
+    <script type="text/x-jtk-templates" src="node-template/templates.html"></script>
+    <script>
+        // var toolkit = jsPlumbToolkit.newInstance();
+        toolkit.load({
+            url: "data/flowchart-1.json"
+        })
+        new jsPlumbToolkitDropManager({
+            source:nodePalette,
+            selector:"div",
+            surface:renderer,
+            dataGenerator: function (el) {
+                return {
+                    w:120,
+                    h:80,
+                    type:el.getAttribute("data-node-type")
+                };
+            },
+            onEdgeDrop:function(data, edge, el, evt, pageLocation) {
+                var positionOnSurface = renderer.mapLocation.apply(renderer, pageLocation);
+                data.left = positionOnSurface.left;
+                data.top = positionOnSurface.top;
+                toolkit.addFactoryNode(data.type, data, function(newNode) {
+                    var currentSource = edge.source; // the current source node
+                    var currentTarget = edge.target; // the target node
+                    toolkit.removeEdge(edge);
+                    toolkit.addEdge({source:currentSource, target:newNode, data:{label:"...", type:"connection"}});
+                    toolkit.addEdge({source:newNode, target:currentTarget, data:{label:"...", type:"connection"}});
+                    renderer.setPosition(newNode, positionOnSurface.left, positionOnSurface.top);
+                });
+            },
+
+            onCanvasDrop:function(data, positionOnSurface) {
+                data.left = positionOnSurface.left;
+                data.top = positionOnSurface.top;
+                toolkit.addFactoryNode(data.type, data);
+            }
+        });
+
+        jsPlumb.on(document, "tap", ".node-edit", function () {
+            var info = renderer.getObjectInfo(this);
+            jsPlumbToolkit.Dialogs.show({
+                id: "dlgText",
+                data: info.obj.data,
+                title: "Edit " + info.obj.data.type + " name",
+                onOK: function (data) {
+                if (data.text && data.text.length > 2) {
+                    // if name is at least 2 chars long, update the underlying data and update the UI.
+                    toolkit.updateNode(info.obj, data);
+                }
+                }
+            });
+        });
+
+        jsPlumb.on(document, "tap", ".node-delete", function () {
+            var info = renderer.getObjectInfo(this);
+            jsPlumbToolkit.Dialogs.show({
+                id: "dlgConfirm",
+                data: {
+                msg: "Delete '" + info.obj.data.text + "'"
+                },
+                onOK: function () {
+                toolkit.removeNode(info.obj);
+                }
+            });
+        });
+
+        
+
+    </script>
+</body>
+</html>

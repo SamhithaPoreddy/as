@@ -1,0 +1,178 @@
+.demo {
+    /* for IE10+ touch devices */
+    touch-action:none;
+}
+.jtk-demo-main{
+    margin-top: 10px;
+}
+.w {
+    min-width: 70px;
+    min-height: 30px;
+    /* padding: 16px; */
+    position: absolute;
+    z-index: 4;
+    border: 1px solid #2e6f9a;
+    box-shadow: 2px 2px 19px #e0e0e0;
+    -o-box-shadow: 2px 2px 19px #e0e0e0;
+    -webkit-box-shadow: 2px 2px 19px #e0e0e0;
+    -moz-box-shadow: 2px 2px 19px #e0e0e0;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    opacity: 0.8;
+    cursor: move;
+    background-color: white;
+    font-size: 1em;
+    -webkit-transition: background-color 0.25s ease-in;
+    -moz-transition: background-color 0.25s ease-in;
+    transition: background-color 0.25s ease-in;
+    text-align: center;
+    max-width: 200px;
+}
+
+.w:hover {
+    background-color: #5c96bc;
+    color: white;
+}
+
+.aLabel {
+    -webkit-transition: background-color 0.25s ease-in;
+    -moz-transition: background-color 0.25s ease-in;
+    transition: background-color 0.25s ease-in;
+}
+
+.aLabel.jtk-hover, .jtk-source-hover, .jtk-target-hover {
+    background-color: #1e8151;
+    color: white;
+}
+
+.aLabel {
+    background-color: white;
+    opacity: 0.8;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    border: 1px solid #346789;
+    cursor: pointer;
+}
+
+.ep {
+    position: absolute;
+    bottom: 43%;
+    right: 1px;
+    width: 7px;
+    height: 7px;
+    background-color: orange;
+    cursor: pointer;
+    box-shadow: 0 0 2px black;
+    -webkit-transition: -webkit-box-shadow 0.25s ease-in;
+    -moz-transition: -moz-box-shadow 0.25s ease-in;
+    transition: box-shadow 0.25s ease-in;
+}
+
+.ep:hover {
+    box-shadow: 0 0 6px black;
+}
+
+.statemachine-demo .jtk-endpoint {
+    z-index: 3;
+}
+
+#opened {
+    left: 10em;
+    top: 5em;
+}
+
+#phone1 {
+    left: 35em;
+    top: 12em;
+    width: 7em;
+}
+
+#inperson {
+    left: 12em;
+    top: 23em;
+}
+
+#phone2 {
+    left: 28em;
+    top: 24em;
+}
+
+#rejected {
+    left: 10em;
+    top: 35em;
+}
+
+.dragHover {
+    border: 2px solid orange;
+}
+
+path, .jtk-endpoint { cursor:pointer; }
+
+#node-container{
+    /* display: flex; */
+    width: 95%;
+    /* justify-content: center; */
+    z-index: 1;
+    position: relative;
+    display: -webkit-flex; /* Safari */
+    -webkit-justify-content: space-around; /* Safari 6.1+ */
+    display: flex;
+    justify-content: space-around;
+    /* margin: 0 auto; */
+}
+
+#toolkit{
+    width: 12%;
+    min-width: 160px;
+    display: inline-block;
+    color: white;
+}
+#canvas{
+    display: inline-block;
+    width: 85%;
+    min-width: 500px;
+}
+
+.show-hide-option{
+    color: #5c96bc;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.show-hide-option:hover{
+    color: coral;
+}
+
+.title{
+    font-size: 1.3em;
+    margin-top: 10%;
+    margin-bottom: 0%;
+}
+
+.describe{
+    margin-top: 0%;
+    margin-bottom: 0%;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 0.8em;
+}
+
+.service-logo{
+    max-height: 70px;
+    max-width: 140px;
+    width: auto;
+    height: auto;
+}
+
+#addVPC{
+    cursor: pointer;
+}
+
+#outputText{
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+}
+
+/* .sftp{
+    background-image: url("../img/sftp.jpeg");
+} */

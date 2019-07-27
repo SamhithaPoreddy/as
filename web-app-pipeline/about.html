@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test for gojs</title>
+</head>
+<body>
+    <div id="workflow-diagram"
+         style="width: 500px; height:300px; background-color: rgb(113, 118, 124)">
+
+    </div>
+    <button id="testBtn"></button>
+    <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
+    <script>
+        // use $ as shortcut for go.GraphObject.make
+        var $ = go.GraphObject.make;
+        var diagram = $(go.Diagram, "workflow-diagram", 
+                        {
+                            "undoManager.isEnabled":true
+                        });
+        
+        diagram.nodeTemplate = $(go.Node, "Auto", 
+            $(go.Shape, "Rectangle", new go.Binding("fill", "color")),
+            $(go.TextBlock, {margin: 6, font: "18px sans-serif"}, new go.Binding("text", "key"))
+        );
+        
+        diagram.model = new go.GraphLinksModel([
+            { key: "Alpha", color: "lightblue" },
+            { key: "Beta", color: "orange" },
+            { key: "Gamma", color: "lightgreen" },
+            { key: "Delta", color: "pink" }
+        ])
+
+        function test(){
+            var node = $(go.Node, "Auto");
+            var shape = $(go.Shape, { figure: "Rectangle", fill: "lightblue"});
+            node.add(shape);
+            var id = "5";
+            diagram.nodeTemplateMap.add(id, node);
+            diagram.model.addNodeData({ category: id });
+        }
+
+        var addTemp = document.getElementById("testBtn");
+        addTemp.addEventListener("click", test);
+
+    </script>
+</body>
+</html>
